@@ -37,14 +37,16 @@ class HomeController extends Controller
         $places = json_decode(file_get_contents($file), true);
 
         foreach ($places as $value => $value1) {
+
                 Places::create(array(
                 'name' => $value1['name'],
                 'latitude' => $value1['latitude'],
                 'longitude' => $value1['latitude'],
             ));
+
         }
         return back()
-            ->with('success', 'Seu arquivo foi importado com Sucesso..')
+            ->with('success', 'Seu arquivo foi importado com sucesso..')
             ->with('file', $fileName);
     }
 

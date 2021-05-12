@@ -30,52 +30,38 @@
                     @endif
 
 
-                    <div class="col" style="alignment: center; text-align: center;">
+                    <div class=" mt-2 col" style="alignment: center; text-align: center;">
                         <form action="{{ route('fileupload') }}" method="POST"
                               enctype="multipart/form-data">
                             @csrf
-                        <div class="card text-white bg-secondary mr-3 d-inline-block"
+                        <div  style=" width: 200px;" class="card text-white bg-secondary mr-3 d-inline-block"
                              style="max-width: 10rem; max-height: 10rem;">
                             <div class="card-header shadow">
                                 <input id="btnfile" name="btnfile" type="file" class="btn btn-outline-dark embed-responsive">
                             </div>
                             <div class="card-body">
-                                <button id="btnprocess" type="submit" class="btn btn-success" disabled>Processar</button>
+                                <button id="btnprocess" type="submit" class="btn btn-info" disabled>Processar</button>
                             </div>
                         </div>
                         </form>
 
-                        <div class=" mt-3 card text-white bg-info mr-3 d-inline-block"
-                             style="max-width: 10rem; max-height: 10rem;">
+                        <div  class=" mt-3 card text-white bg-info mr-3 d-inline-block"
+                             style="max-width: 10rem; max-height: 10rem;" >
                             <div class="card-header shadow">
-                                <button id="btnmodelo1" name="btnmodelo1" class="btn btn-outline-dark embed-responsive" ">Modelo 1</a>
+                                <button id="btnmodelo1" name="btnmodelo1" class="btn btn-success embed-responsive" disabled>LoadMap Makers</a>
                             </div>
                             <div class="card-body">
-
-                                <p class="card-text text-white" style="align-items: center">Exemplo de Mapa dinamico em 2D.</p>
+                                <p class="card-text text-white" style="align-items: center">Mapa dinamico em 2D.</p>
                             </div>
                         </div>
-                        <div class="card text-white bg-warning mr-3 d-inline-block"
-                             style="max-width: 10rem; max-height: 10rem;">
-                            <div class="card-header shadow">
-                                <button id="btnmodelo2" name="btnmodelo2" class="btn btn-outline-dark embed-responsive" ">Modelo 2</a>
-                            </div>
-                            <div class="card-body">
-                                <p class="card-text text-white" style="align-items: center">Exemplo de Mapa dinamico em 3D.</p>
-                            </div>
-                        </div>
-
                     </div>
 
                          <div class="row card-body ml-2" style="alignment: center; text-align: center;">
 
                         <div class="card text-white bg-danger mr-3 d-inline-block"
-                        <p name="result" id="result" class="card-text text-white" style=" width: 100%; height: 400px;">Resultado</p>
-                        <p name="result2" id="result2" class="card-text text-white" style=" width: 100%; height: 400px;">Resultado</p>
-                        <a>Texto de reflexo</a>
-                        <br>
-                        <a>Texto de reflexo</a>
+                        <p name="result" id="result" class="card-text text-white" style=" width: 100%; height: 300px;">Resultado</p>
                         </div>
+
 
 
                 </div>
@@ -89,6 +75,7 @@
     $('#btnfile').on('click', function () {
 
         document.getElementById('btnprocess').disabled = false;
+        document.getElementById('btnmodelo1').disabled = false;
 
     });
 
