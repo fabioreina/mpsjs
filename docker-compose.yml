@@ -1,0 +1,40 @@
+# syntax
+version: '2.1'
+
+# Named volumes
+volumes:
+  # Postgres Data
+  mpsjs-pg-data:
+    driver: local
+
+
+services:
+  # Postgres (10.3)
+  postgres:
+    image: postgres
+    container_name: mpsjs-pg
+    volumes:
+      - mpsjs-pg-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=mpsjs
+      - POSTGRES_DB=mpsjs
+      - POSTGRES_USER=postgres
+
+  # PHP (with Nginx)
+  # you can change from nginx to apache, just change session 'image'
+  app:
+    image: ambientum/php:7.4-nginx
+    container_name: mpsjs-app
+    volumes:
+      - .:/var/www/app
+    ports:
+      - "80:8080"
+      - "443:8083"
+    environment:
+      - PHP_MEMORY_LIMIT=4096M
+    links:
+      - postgres
+
+      # Laravel Queues
