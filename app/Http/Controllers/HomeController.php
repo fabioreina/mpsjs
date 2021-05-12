@@ -48,6 +48,7 @@ class HomeController extends Controller
         return back()
             ->with('success', 'Seu arquivo foi importado com sucesso..')
             ->with('file', $fileName);
+
     }
 
     public function modelo1(Request $request)

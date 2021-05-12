@@ -45,15 +45,16 @@
                         </div>
                         </form>
 
-                        <div  class=" mt-3 card text-white bg-info mr-3 d-inline-block"
+                        <div id="result2" class=" mt-3 card text-white bg-info mr-3 d-inline-block"
                              style="max-width: 10rem; max-height: 10rem;" >
                             <div class="card-header shadow">
-                                <button id="btnmodelo1" name="btnmodelo1" class="btn btn-success embed-responsive" disabled>LoadMap Makers</a>
+                                <button id="btnmodelo1" name="btnmodelo1" class="btn btn-success embed-responsive">LoadMap Makers</a>
                             </div>
                             <div class="card-body">
                                 <p class="card-text text-white" style="align-items: center">Mapa dinamico em 2D.</p>
                             </div>
                         </div>
+
                     </div>
 
                          <div class="row card-body ml-2" style="alignment: center; text-align: center;">
@@ -74,8 +75,16 @@
 
     $('#btnfile').on('click', function () {
 
+
+        var i = 0;
+        var loop = setInterval(function(){
+            console.log("valor de i="+i);
+            if(i == 3){
+                clearInterval(loop);
+            }
+            i++;
+        }, 1000);
         document.getElementById('btnprocess').disabled = false;
-        document.getElementById('btnmodelo1').disabled = false;
 
     });
 
