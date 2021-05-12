@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Places;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Psy\Util\Json;
 
 class HomeController extends Controller
 {
@@ -23,20 +26,37 @@ class HomeController extends Controller
      */
     public function index()
     {
+        return view('home');
+    }
 
-        $latitude='-23.52710718577365';
-        $longitude='-46.69994882618741';
+    public function fileupload(Request $request)
+    {
+        $fileName = time().'.'.$request->btnfile->extension();
+        $file = Storage::disk('public')->path('uploads/' . $fileName);
+        $request->btnfile->move(public_path('uploads'), $fileName);
+        $places = json_decode(file_get_contents($file), true);
 
-        return view('home', compact('latitude', 'longitude'));
+        foreach ($places as $value => $value1) {
+                Places::create(array(
+                'name' => $value1['name'],
+                'latitude' => $value1['latitude'],
+                'longitude' => $value1['latitude'],
+            ));
+        }
+        return back()
+            ->with('success', 'Seu arquivo foi importado com Sucesso..')
+            ->with('file', $fileName);
     }
 
     public function modelo1(Request $request)
     {
-        dd($request);
+        $places = Places::orderBy('id')->get();
+        return view('elements.result', compact('places'));
     }
 
     public function modelo2(Request $request)
     {
-        dd($request);
+        $places = Places::orderBy('id')->get();
+        return view('elements.result2', compact('places'));
     }
 }

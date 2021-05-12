@@ -21,6 +21,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::post('/modelo1', [App\Http\Controllers\HomeController::class, 'modelo1'])->name('modelo1');
 Route::post('/modelo2', [App\Http\Controllers\HomeController::class, 'modelo2'])->name('modelo2');
+Route::post('/fileupload', [App\Http\Controllers\HomeController::class, 'fileupload'])->name('fileupload');
 
 //Route::get('/zeladoria', [App\Http\Controllers\ZeladoriaController::class, 'index'])->name('zeladoria.index');
 //
